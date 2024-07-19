@@ -42,15 +42,25 @@ public class ProductController {
     }
 
     @GetMapping("/search")
-    public String showProduct(@RequestParam("productName") String name,Model model){
-        Product product= productService.getProductByName(name);
-        if (product != null){
-            model.addAttribute("product",product);
+    public String showProduct(@RequestParam("productName") String name,Model model) {
+        Product product = productService.getProductByName(name);
+        if (product != null) {
+            model.addAttribute("product", product);
             return "detail";
-        }else {
+        } else {
             return "home";
+        }
+    }
+
+        @GetMapping("/filter")
+        public String filterProducts(
+                @RequestParam(value = "category", required = false) String category, Model model,
+                @RequestParam(value = "maxprice", required = false) Double maxprice) {
+            List<Product> filterProducts = productService.filterProducts(category, maxprice);
+            model.addAttribute("products", filterProducts);
+            return "list";
         }
 
     }
-}
+
 
