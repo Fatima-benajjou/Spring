@@ -31,5 +31,7 @@ public class ProductService {
     public Product getProductById(int id) {
         return products.stream().filter(product -> product.getId() == id).findFirst().orElse(null);
     }
-
+    public Product getProductByName(String name){
+        return products.stream().filter(p -> p.getName().equals(name)).findFirst().orElse(null);
+    }
 }

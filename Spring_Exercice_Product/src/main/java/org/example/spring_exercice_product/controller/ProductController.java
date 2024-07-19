@@ -40,5 +40,17 @@ public class ProductController {
         model.addAttribute("product", product);
         return "detail";
     }
+
+    @GetMapping("/search") // search?contactName=Toto
+    public String showProduct(@RequestParam("productName") String name,Model model){
+        Product product= productService.getProductByName(name);
+        if (product != null){
+            model.addAttribute("product",product);
+            return "detail";
+        }else {
+            return "home";
+        }
+
+    }
 }
 
