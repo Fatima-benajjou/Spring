@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Details du produit</title>
+</head>
+<body>
+
+<h1> Detail du produit sélectionné</h1>
+<p>Nom du produit : <span th:text="${product.getName()}"></span></p>
+<p>Catégorie du produit : <span th:text="${product.getCategory()}"></span></p>
+<p>Prix : <span th:text="${product.getPrice()}"></span></p>
+<a th:href="@{/list}">Retour Liste</a>
+
+</body>
+</html>
