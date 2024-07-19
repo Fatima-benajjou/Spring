@@ -18,7 +18,6 @@ public class ProductService {
         products = new ArrayList<>();
         Product product = new Product();
 
-        // Ajouter quelques produits pour la démonstration
         products.add(new Product(1, "Product1", "Food", 100));
         products.add(new Product(2, "Product2", "Electronic", 200));
         products.add(new Product(3, "Product3", "Mode", 150));
@@ -31,7 +30,14 @@ public class ProductService {
     public Product getProductById(int id) {
         return products.stream().filter(product -> product.getId() == id).findFirst().orElse(null);
     }
-    public Product getProductByName(String name){
+
+    public Product getProductByName(String name) {
         return products.stream().filter(p -> p.getName().equals(name)).findFirst().orElse(null);
+    }
+
+    public List<Product> filterProducts(String category, Double maxPrice) {
+        return products.stream().filter(p -> p.getCategory().equalsIgnoreCase(category) &
+                        p.getPrice() <= maxPrice)
+                .toList();
     }
 }
