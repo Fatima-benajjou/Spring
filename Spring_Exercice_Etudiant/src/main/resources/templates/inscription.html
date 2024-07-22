@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Formulaire d'Inscription</title>
+    <link th:replace="~{accueil :: bootstrap}">
+</head>
+<body>
+<div class="container">
+
+    <h1>Formulaire d'Inscription</h1>
+<form th:action="@{/inscription}" th:object="${student}" method="post">
+    <div class="form-group p-2">
+    <input th:field="*{id}" hidden>
+    <div>
+        <label for="lastName">Nom :</label>
+        <input class="form-control" type="text" id="lastName" th:field="*{lastName}" placeholder="Entrez votre nom" required>
+    </div>
+    <div>
+        <label for="firstName">Prénom :</label>
+        <input class="form-control" type="text" id="firstName" th:field="*{firstName}" placeholder="Entrez votre prénom" required>
+    </div>
+    <div>
+        <label for="age">Âge :</label>
+        <input class="form-control" type="number" id="age" th:field="*{age}" placeholder="Entrez votre âge" required>
+    </div>
+    <div>
+        <label for="email">Email :</label>
+        <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Entrez votre email" required>
+    </div>
+    <div>
+        <button class="btn btn-success" type="submit">S'inscrire</button>
+    </div>
+    </div>
+</form>
+
+    <p>
+        <a th:href = "@{/}">Page d'accueil</a>
+    </p>
+
+</div>
+</body>
+</html>

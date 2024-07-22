@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link th:replace="~{accueil :: bootstrap}">
+</head>
+<body>
+
+
+
+<div class="container">
+
+    <h1> Liste Etudiant(s)</h1>
+
+    <p>
+        <a th:href = "@{/}">Page d'accueil</a>
+    </p>
+
+    <ol th:if="${students !=null}">
+
+        <li th:each="s : ${students}">
+            <a th:href="@{/detail/{id} (id=${s.getId()})}"> <span th:text="${s.getFirstName()}"></span></a>
+        </li>
+    </ol>
+
+</div>
+</body>
+</html>

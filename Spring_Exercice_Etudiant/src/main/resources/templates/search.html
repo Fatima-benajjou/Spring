@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Barre de recherche</title>
+    <link th:replace="~{accueil :: bootstrap}">
+</head>
+<body>
+<div class="container">
+<h2>Recherche</h2>
+<form th:action="@{/search}" method="post">
+    <div>
+        <input type="text" id="lastName" name="lastname" placeholder="Entrez votre recherche..." required/>
+        <button class="btn btn-success" type="submit">Rechercher</button>
+    </div>
+</form>
+</div>
+</body>
+</html>
