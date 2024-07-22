@@ -17,12 +17,16 @@
         <a th:href = "@{/}">Page d'accueil</a>
     </p>
 
-    <ol th:if="${students !=null}">
+    <ul th:if="${students !=null}">
 
         <li th:each="s : ${students}">
-            <a th:href="@{/detail/{id} (id=${s.getId()})}"> <span th:text="${s.getFirstName()}"></span></a>
+            <a th:href="@{/detail/{id} (id=${s.getId()})}">
+                <span th:text="${s.getFirstName()}"></span>
+                <span th:text="${s.getLastName()}"></span>
+            </a>
+
         </li>
-    </ol>
+    </ul>
 
 </div>
 </body>
