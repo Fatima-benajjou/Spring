@@ -9,13 +9,14 @@ import java.util.List;
 @Service
 public class StudentService {
     private final List<Student> students;
+    private int compteurId = 1;
 
     public StudentService() {
         students = new ArrayList<>();
 
-        students.add((new Student(1, "Ben", "Fat", 18, "fafafa")));
-        students.add((new Student(2, "Bena", "Fati", 20, "fatiti")));
-        students.add((new Student(3, "Benajjou", "Fatima", 35, "famama")));
+        students.add((new Student(compteurId++, "Ben", "Fat", 18, "fafafa")));
+        students.add((new Student(compteurId++, "Bena", "Fati", 20, "fatiti")));
+        students.add((new Student(compteurId++, "Benajjou", "Fatima", 35, "famama")));
 
     }
 
