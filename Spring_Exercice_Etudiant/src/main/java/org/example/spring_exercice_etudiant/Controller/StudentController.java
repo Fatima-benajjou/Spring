@@ -1,9 +1,11 @@
 package org.example.spring_exercice_etudiant.Controller;
 
+import jakarta.validation.Valid;
 import org.example.spring_exercice_etudiant.Model.Student;
 import org.example.spring_exercice_etudiant.Service.StudentService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.validation.BindingResult;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
@@ -38,6 +40,7 @@ public class StudentController {
         return "detail";
     }
 
+
     @GetMapping("/search")
     public String showStudent(Model model) {
         return "search";
@@ -50,7 +53,6 @@ public class StudentController {
         model.addAttribute("students", students);
         return "list";
     }
-
     @GetMapping("/inscription")
     public String addStudent(@RequestParam(value = "studentId", required = false) Integer id, Model model) {
         if(id != null) {
@@ -65,8 +67,11 @@ public class StudentController {
 
 
     @PostMapping("/inscription")
-    public String submitForm(@ModelAttribute("student") Student student, Model model) {
-
+    public String submitForm(@Valid @ModelAttribute("student") Student student, BindingResult bindingResult, Model model) {
+        if (bindingResult.hasErrors()) {
+            return "inscription";
+        } else
+//
         if (student.getId() > 0) {
             studentService.updateStudent(student);
         } else {
@@ -74,7 +79,6 @@ public class StudentController {
         }
         return "redirect:/list";
     }
-
 
     @GetMapping("/delete")
     public String deleteStudent(@RequestParam("studentId") int studentId, Model model) {

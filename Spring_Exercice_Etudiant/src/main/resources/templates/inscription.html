@@ -14,19 +14,23 @@
     <input th:field="*{id}" hidden>
     <div>
         <label for="lastName">Nom :</label>
-        <input class="form-control" type="text" id="lastName" th:field="*{lastName}" placeholder="Entrez votre nom" required>
+        <input class="form-control" type="text" id="lastName" th:field="*{lastName}" placeholder="Entrez votre nom" >
+        <span th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"></span>
     </div>
     <div>
         <label for="firstName">Prénom :</label>
-        <input class="form-control" type="text" id="firstName" th:field="*{firstName}" placeholder="Entrez votre prénom" required>
+        <input class="form-control" type="text" id="firstName" th:field="*{firstName}" placeholder="Entrez votre prénom" >
+        <span th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"></span>
     </div>
     <div>
         <label for="age">Âge :</label>
-        <input class="form-control" type="number" id="age" th:field="*{age}" placeholder="Entrez votre âge" required>
+        <input class="form-control" type="number" id="age" th:field="*{age}" placeholder="Entrez votre âge" >
+        <span th:if="${#fields.hasErrors('age')}" th:errors="*{age}"></span>
     </div>
     <div>
         <label for="email">Email :</label>
-        <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Entrez votre email" required>
+        <input class="form-control" type="email" id="email" th:field="*{email}" placeholder="Entrez votre email">
+        <span th:if="${#fields.hasErrors('email')}" th:errors="*{email}"></span>
     </div>
     <div>
         <button class="btn btn-success" type="submit">S'inscrire</button>
