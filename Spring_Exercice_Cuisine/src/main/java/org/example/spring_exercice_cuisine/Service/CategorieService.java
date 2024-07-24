@@ -41,7 +41,9 @@ public class CategorieService {
 
     public Categorie updateCategorie(Categorie categorie) {
         Categorie old = getCategorieById(categorie.getId());
-       int index = categories.indexOf(old);
-       return categories.set(index, categorie);
+        if(old != null) {
+            old.setNom(categorie.getNom());
+            old.setDescription(categorie.getDescription());
+        } return old;
     }
 }

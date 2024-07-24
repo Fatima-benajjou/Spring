@@ -2,9 +2,15 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Liste des recettes</title>
+    <meta charset="UTF-8">
 </head>
 <body>
+<div class="container">
 <h2>Liste des recettes</h2>
+
+    <p>
+        <a th:href = "@{/}">Page d'accueil</a>
+    </p>
 <table>
     <thead>
     <tr>
@@ -31,5 +37,6 @@
     </tbody>
 </table>
 <a th:href="@{/recettes/ajout}">Ajouter une recette</a>
+</div>
 </body>
 </html>

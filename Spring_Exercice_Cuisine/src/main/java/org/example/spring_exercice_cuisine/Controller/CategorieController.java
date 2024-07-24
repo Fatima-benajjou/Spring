@@ -17,7 +17,6 @@ public class CategorieController {
     public CategorieController(CategorieService categorieService) {this.categorieService = categorieService;}
 
     @GetMapping("/")
-
     public String listCategories(Model model) {
         model.addAttribute("categories", categorieService.getAll());
         return "categories/listeCategories";
@@ -32,7 +31,7 @@ public class CategorieController {
     @PostMapping("/ajout")
     public String addCategorie(@Valid @ModelAttribute Categorie categorie, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "categories/ajoutCategorie";
+            return "redirect:/categories/ajout";
         }
         categorieService.addCategorie(categorie);
         return "redirect:/categories";

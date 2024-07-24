@@ -19,5 +19,6 @@ public class Recette {
     @NotNull(message = "veuillez remplir ce champs")
     private String ingredients;
     private String instructions;
-    private String categorie;
+    private Categorie categorie;
+    private int idCategorie;
 }

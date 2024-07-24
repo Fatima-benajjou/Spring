@@ -2,6 +2,7 @@ package org.example.spring_exercice_cuisine.Controller;
 
 import jakarta.validation.Valid;
 import org.example.spring_exercice_cuisine.Model.Recette;
+import org.example.spring_exercice_cuisine.Service.CategorieService;
 import org.example.spring_exercice_cuisine.Service.RecetteService;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -11,11 +12,13 @@ import org.springframework.web.bind.annotation.*;
 @Controller
 @RequestMapping("/recettes")
 public class RecetteController {
-
+    private CategorieService categorieService;
     private RecetteService recetteService;
-public RecetteController(RecetteService recetteService) {
-    this.recetteService = recetteService;
-}
+
+    public RecetteController(CategorieService categorieService, RecetteService recetteService) {
+        this.recetteService = recetteService;
+        this.categorieService = categorieService;
+    }
 
     @GetMapping("/")
     public String listRecettes(Model model) {
@@ -27,16 +30,18 @@ public RecetteController(RecetteService recetteService) {
     @GetMapping("/ajout")
     public String showAddRecetteForm(Model model) {
         model.addAttribute("recette", new Recette());
+        model.addAttribute("categories", categorieService.getAll());
         return "recettes/ajoutRecette";
     }
 
     @PostMapping("/ajout")
     public String addRecette(@Valid @ModelAttribute Recette recette, BindingResult result, Model model) {
         if (result.hasErrors()) {
-            return "recettes/ajoutRecette";
+            return "redirect:/recettes/ajout";
         }
+        recette.setCategorie(categorieService.getCategorieById(recette.getIdCategorie()));
         recetteService.addRecette(recette);
-        return "redirect:/recettes";
+        return "redirect:/recettes/";
     }
 
     @GetMapping("/modifier/{id}")
@@ -51,6 +56,7 @@ public RecetteController(RecetteService recetteService) {
         if (result.hasErrors()) {
             return "recettes/modifierRecette";
         }
+//        recette.setCategorie(categorieService.getCategorieById(recette.getIdCategorie()));
         recetteService.addRecette(recette);
         return "redirect:/recettes";
     }

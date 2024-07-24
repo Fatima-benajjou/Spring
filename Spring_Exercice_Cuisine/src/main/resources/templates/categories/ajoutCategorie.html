@@ -3,21 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <title>Ajouter une catégorie</title>
+    <meta charset="UTF-8">
+    <link th:replace="~{home :: bootstrap}">
 </head>
 <body>
 <div class="container">
     <h2>Ajouter une catégorie</h2>
     <form th:action="@{/categories/ajout}" th:object="${categorie}" method="post">
+        <div class="form-group p-2">
         <div>
             <label for="nom">Nom:</label>
             <input class="form-control" type="text" id="nom" th:field="*{nom}" required/>
         </div>
         <div>
             <label for="description">Description:</label>
-            <textarea id="description" th:field="*{description}" required></textarea>
+            <textarea class="form-control" id="description" th:field="*{description}" required></textarea>
         </div>
         <div>
-            <button type="submit">Ajouter</button>
+            <button class="btn btn-primary" type="submit">Ajouter</button>
+        </div>
         </div>
     </form>
 </div>
