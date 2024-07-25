@@ -13,18 +13,15 @@ import java.util.UUID;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-@Table(name="fourniture")
+@Table(name = "fourniture")
 public class Furniture {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-@Column(name="id")
+    @Column(name = "furnitureId")
     private int id;
     private String name;
     private String description;
     private double price;
     private int stock;
-    @OneToOne
-    @JoinColumn(name="id_CartItem")
-    private CartItem cartItem;
 
 }

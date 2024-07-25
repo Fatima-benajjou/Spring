@@ -6,26 +6,30 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
+import org.springframework.beans.factory.annotation.Autowired;
+
+import java.util.List;
+
 @Service
 public class FurnitureService {
-    private final FurnitureRepository furnitureRepository;
 
-    public FurnitureService(FurnitureRepository furnitureRepository) {
-        this.furnitureRepository = furnitureRepository;
-    }
+    @Autowired
+    private FurnitureRepository furnitureRepository;
 
-    public List<Furniture> getAllFurnitures() {
+    public List<Furniture> getAllFurniture() {
         return furnitureRepository.findAll();
     }
+
+    public void saveFurniture(Furniture furniture) {
+        furnitureRepository.save(furniture);
+    }
+
     public Furniture getFurnitureById(int id) {
-        return furnitureRepository.findById(id);
+        return furnitureRepository.findById(id).orElse(null);
     }
 
-    public Furniture saveFurniture(Furniture furniture) {
-        return furnitureRepository.save(furniture);
-    }
-
-    public void deleteFurniture(Furniture furniture) {
-         furnitureRepository.delete(furniture);
+    public void deleteFurniture(int id) {
+        furnitureRepository.deleteById(id);
     }
 }
+

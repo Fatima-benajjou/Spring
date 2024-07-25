@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Panier</title>
+</head>
+<body>
+<h2>Votre panier</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Prix</th>
+        <th>Quantité</th>
+        <th>Total</th>
+        <th>Actions</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="cartItem : ${cartItems}">
+        <td th:text="${cartItem.id}">1</td>
+        <td th:text="${cartItem.furniture.name}">Nom</td>
+        <td th:text="${cartItem.furniture.price}">Prix</td>
+        <td th:text="${cartItem.quantity}">Quantité</td>
+        <td th:text="${cartItem.furniture.price * cartItem.quantity}">Total</td>
+        <td>
+            <a th:href="@{/cart/remove(id=${cartItem.id})}">Supprimer</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/cart/clear}">Vider le panier</a>
+<br>
+<a th:href="@{/furniture/}">revenir à la liste de meuble</a>
+</body>
+</html>

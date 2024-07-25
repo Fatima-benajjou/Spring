@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+
+    <title>Liste des meubles</title>
+</head>
+<body>
+<h2>Liste des meubles</h2>
+<table>
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Description</th>
+        <th>Prix</th>
+        <th>Stock</th>
+        <th>Saisir la quantité</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="furniture : ${furnitures}">
+        <td th:text="${furniture.id}">1</td>
+        <td th:text="${furniture.name}">Nom</td>
+        <td th:text="${furniture.description}">Description</td>
+        <td th:text="${furniture.price}">Prix</td>
+        <td th:text="${furniture.stock}">Stock</td>
+        <td>
+            <a th:href="@{/furniture/edit(id=${furniture.getId()})}">Modifier</a>
+            <a th:href="@{/furniture/delete(id=${furniture.id})}">Supprimer</a>
+            <form th:action="@{/cart/add}" method="post" style="display:inline;">
+                <input type="hidden" name="furnitureId" th:value="${furniture.id}"/>
+                <input type="number" name="quantity" min="1" max="${furniture.stock}" required/>
+                <button type="submit">Ajouter au panier</button>
+            </form>
+        </td>
+    </tr>
+    </tbody>
+</table>
+<a th:href="@{/furniture/addFurniture}">Ajouter un meuble</a>
+</body>
+</html>
