@@ -28,7 +28,7 @@ public class CartController {
 
     @PostMapping("/add")
     public String addFurnitureToCart(@RequestParam("furnitureId") int furnitureId, @RequestParam("quantity") int quantity) {
-        cartService.addToCart(furnitureId, quantity);
+        cartService.addFurnitureToCart(furnitureId, quantity);
         return "redirect:/cart";
     }
 

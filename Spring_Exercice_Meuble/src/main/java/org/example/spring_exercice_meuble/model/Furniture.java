@@ -23,5 +23,8 @@ public class Furniture {
     private String description;
     private double price;
     private int stock;
+@OneToOne(mappedBy = "furniture", cascade = CascadeType.REMOVE)
+    private CartItem cartItem;
+
 
 }

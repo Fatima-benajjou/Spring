@@ -46,17 +46,17 @@ public class CartService {
 
 
 
-    public void addToCart(int furnitureId, int quantity) {
-        Furniture furniture = furnitureRepository.findById(furnitureId).orElse(null);
-        if (furniture != null && quantity > 0 && furniture.getStock()>0) {
-            CartItem cartItem = new CartItem();
-            cartItem.setFurniture(furniture);
-            cartItem.setQuantity(quantity);
-            cartItemRepository.save(cartItem);
-            furniture.setStock(furniture.getStock() - quantity);
-            furnitureRepository.save(furniture);
-        }
-    }
+//    public void addToCart(int furnitureId, int quantity) {
+//        Furniture furniture = furnitureRepository.findById(furnitureId).orElse(null);
+//        if (furniture != null && quantity > 0 && furniture.getStock()>0) {
+//            CartItem cartItem = new CartItem();
+//            cartItem.setFurniture(furniture);
+//            cartItem.setQuantity(quantity);
+//            cartItemRepository.save(cartItem);
+//            furniture.setStock(furniture.getStock() - quantity);
+//            furnitureRepository.save(furniture);
+//        }
+//    }
 
     public void removeFromCart(int id) {
         CartItem cartItem = cartItemRepository.findById(id).orElse(null);
