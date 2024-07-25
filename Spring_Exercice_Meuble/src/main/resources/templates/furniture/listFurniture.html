@@ -1,20 +1,22 @@
 <!DOCTYPE html>
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link th:replace="~{home :: bootstrap}">
 
     <title>Liste des meubles</title>
 </head>
 <body>
+<div class="container">
 <h2>Liste des meubles</h2>
-<table>
+<table  class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Description</th>
-        <th>Prix</th>
-        <th>Stock</th>
-        <th>Saisir la quantité</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col">Description</th>
+        <th scope="col">Prix</th>
+        <th scope="col">Stock</th>
+        <th scope="col">Saisir la quantité</th>
     </tr>
     </thead>
     <tbody>
@@ -39,5 +41,6 @@
 <a th:href="@{/furniture/addFurniture}">Ajouter un meuble</a>
 <br>
 <a th:href="@{/cart}">Accéder au panier</a>
+</div>
 </body>
 </html>

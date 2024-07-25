@@ -1,19 +1,21 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
+    <link th:replace="~{home :: bootstrap}">
     <title>Panier</title>
 </head>
 <body>
+<div class="container">
 <h2>Votre panier</h2>
-<table>
+<table class="table">
     <thead>
     <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Prix</th>
-        <th>Quantité</th>
-        <th>Total</th>
-        <th>Actions</th>
+        <th scope="col">ID</th>
+        <th scope="col">Nom</th>
+        <th scope="col" >Prix</th>
+        <th scope="col">Quantité</th>
+        <th scope="col">Total</th>
+        <th scope="col">Actions</th>
     </tr>
     </thead>
     <tbody>
@@ -32,5 +34,6 @@
 <a th:href="@{/cart/clear}">Vider le panier</a>
 <br>
 <a th:href="@{/furniture/}">revenir à la liste de meuble</a>
+</div>
 </body>
 </html>

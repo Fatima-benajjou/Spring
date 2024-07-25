@@ -2,28 +2,31 @@
 <html lang="en" xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Ajouter un meuble</title>
+    <link th:replace="~{home :: bootstrap}">
 </head>
 <body>
 <h2>Ajouter un meuble</h2>
 <form th:action="@{/furniture/addFurniture}" th:object="${furniture}" method="post">
+    <div class="container">
     <div>
         <label for="name">Nom:</label>
-        <input type="text" id="name" th:field="*{name}" required/>
+        <input class="form-control" type="text" id="name" th:field="*{name}" required/>
     </div>
     <div>
         <label for="description">Description:</label>
-        <textarea id="description" th:field="*{description}" required></textarea>
+        <textarea class="form-control" id="description" th:field="*{description}" required></textarea>
     </div>
     <div>
         <label for="price">Prix:</label>
-        <input type="number" id="price" th:field="*{price}" required/>
+        <input class="form-control" type="number" id="price" th:field="*{price}" required/>
     </div>
     <div>
         <label for="stock">Stock:</label>
-        <input type="number" id="stock" th:field="*{stock}" required/>
+        <input class="form-control" type="number" id="stock" th:field="*{stock}" required/>
     </div>
     <div>
-        <button type="submit">Ajouter</button>
+        <button class="btn btn-success" type="submit">Ajouter</button>
+    </div>
     </div>
 </form>
 </body>
