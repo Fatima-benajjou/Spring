@@ -32,7 +32,7 @@
             <form th:action="@{/cart/add}" method="post" style="display:inline;">
                 <input type="hidden" name="furnitureId" th:value="${furniture.id}"/>
                 <input type="number" name="quantity" min="1" max="${furniture.stock}" required/>
-                <button type="submit">Ajouter au panier</button>
+                <button class="btn btn-success" type="submit">Ajouter au panier</button>
             </form>
         </td>
     </tr>
